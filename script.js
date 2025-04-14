@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+  jQuery(document).ready(function ($) {
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTBx2QFmcm79K2dkyShsmZEV490KKtEMIYIrzG7HrxAw1Z5AxPFHzvoFhKNdOigjRnb7VAbrSpUPtII/pub?output=csv';
 
     Papa.parse(csvUrl, {
@@ -60,4 +60,11 @@ jQuery(document).ready(function ($) {
     });
   });
 
- 
+  // This ensures the content below is visible after full load
+  window.addEventListener("load", function () {
+    document.body.style.overflow = "auto";
+    const main = document.querySelector("main");
+    if (main) {
+      main.style.height = "auto";
+    }
+  });
