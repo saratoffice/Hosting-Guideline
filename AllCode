@@ -1,0 +1,184 @@
+<!-- START: Full CSV Table Module -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" media="all">
+<style>
+  /* Custom Table Styling with Divi Overrides */
+  #csvTable.dataTable thead tr th {
+    background-color: #101535 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    text-shadow: none;
+    border-bottom: 2px solid #b20bb3 !important;
+  }
+
+  #csvTable.dataTable thead .sorting:after,
+  #csvTable.dataTable thead .sorting_asc:after,
+  #csvTable.dataTable thead .sorting_desc:after {
+    color: #fff !important;
+    opacity: 0.8 !important;
+  }
+
+  #csvTable.dataTable tbody tr:hover td {
+    background-color: #8cfa64 !important;
+  }
+
+  #csvTable.dataTable {
+    width: 100% !important;
+    background: white;
+    color: black;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    border-collapse: collapse !important;
+    margin: 20px 0;
+  }
+
+  #csvTable.dataTable th,
+  #csvTable.dataTable td {
+    padding: 12px 15px !important;
+    vertical-align: middle !important;
+    border-color: #eee !important;
+  }
+
+  #csvTable.dataTable td:last-child {
+    text-align: right !important;
+  }
+
+  .download-btn, #csvTable.dataTable td a button {
+    padding: 8px 16px !important;
+    background-color: #007bff !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .download-btn:hover, #csvTable.dataTable td a button:hover {
+    background-color: #e615ed !important;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(230, 21, 237, 0.4) !important;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    #csvTable.dataTable, 
+    #csvTable.dataTable thead, 
+    #csvTable.dataTable tbody, 
+    #csvTable.dataTable th, 
+    #csvTable.dataTable td, 
+    #csvTable.dataTable tr {
+      display: block !important;
+      width: 100% !important;
+    }
+
+    #csvTable.dataTable thead {
+      display: none !important;
+    }
+
+    #csvTable.dataTable tr {
+      margin-bottom: 15px !important;
+      border: 1px solid #ddd !important;
+      border-radius: 8px !important;
+    }
+
+    #csvTable.dataTable td {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      padding: 10px !important;
+      font-size: 14px !important;
+    }
+
+    #csvTable.dataTable td::before {
+      content: attr(data-label) !important;
+      font-weight: 600 !important;
+      color: #e615ed !important;
+      margin-right: 15px !important;
+    }
+
+    #csvTable.dataTable td:last-child {
+      justify-content: flex-end !important;
+    }
+  }
+</style>
+
+<div class="sara-table-container">
+  <table id="csvTable" class="display">
+    <thead>
+      <tr>
+        <th>S.N.</th>
+        <th>Letter No.</th>
+        <th>Date</th>
+        <th>Subject</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+<script>
+jQuery(document).ready(function($) {
+  const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTBx2QFmcm79K2dkyShsmZEV490KKtEMIYIrzG7HrxAw1Z5AxPFHzvoFhKNdOigjRnb7VAbrSpUPtII/pub?output=csv';
+
+  Papa.parse(csvUrl, {
+    download: true,
+    header: true,
+    complete: function(results) {
+      const data = results.data;
+      const tbody = $('#csvTable tbody');
+      tbody.empty();
+
+      data.forEach(function(row, index) {
+        if (!row["S.N."]) return;
+
+        const tableRow = `
+          <tr>
+            <td data-label="S.N.">${row["S.N."]}</td>
+            <td data-label="Letter No.">${row["Letter No."]}</td>
+            <td data-label="Date">${row["Date"]}</td>
+            <td data-label="Subject" class="wrap-text">${row["Subject"]}</td>
+            <td data-label="Download">${row["Button"]}</td>
+          </tr>`;
+        tbody.append(tableRow);
+      });
+
+      $('#csvTable').DataTable({
+        responsive: true,
+        pageLength: 5,
+        autoWidth: false,
+        dom: '<"top-wrapper"lf>rt<"bottom-wrapper"ip>',
+        language: {
+          searchPlaceholder: "Search records...",
+          search: "",
+          lengthMenu: "Show _MENU_ entries",
+          info: "Showing _START_ to _END_ of _TOTAL_ entries",
+          paginate: {
+            previous: "‹",
+            next: "›"
+          }
+        },
+        initComplete: function() {
+          $('.dataTables_wrapper').css('padding-bottom', '20px');
+          $('#csvTable thead th').css({
+            'background-color': '#e615ed',
+            'color': '#ffffff'
+          });
+        },
+        drawCallback: function() {
+          $('#csvTable thead th').css({
+            'background-color': '#e615ed',
+            'color': '#ffffff'
+          });
+        }
+      });
+    },
+    error: function(err) {
+      console.error('CSV Load Error:', err);
+      alert('Failed to load data. Please try again later.');
+    }
+  });
+});
+</script>
+<!-- END: Full CSV Table Module -->
