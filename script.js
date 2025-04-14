@@ -60,11 +60,4 @@ jQuery(document).ready(function ($) {
     });
   });
 
-  // This ensures the content below is visible after full load
-  window.addEventListener("load", function () {
-    document.body.style.overflow = "auto";
-    const main = document.querySelector("main");
-    if (main) {
-      main.style.height = "auto";
-    }
-  });
+ 
