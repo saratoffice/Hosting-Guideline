@@ -6,7 +6,10 @@
   text-shadow: none;
   border-bottom: 2px solid #b20bb3 !important;
 }
-
+/* Center-align only the "Subject" header */
+#csvTable thead th:nth-child(4) {
+  text-align: center !important;
+}
 /* Sorting arrows - Target DataTables classes */
 #csvTable.dataTable thead .sorting:after,
 #csvTable.dataTable thead .sorting_asc:after,
@@ -119,6 +122,28 @@ td a button:hover {
     flex: 1;
     margin-right: 10px;
   }
+  /* Optional: Prevent long Subject lines from breaking layout */
+.wrap-text {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Improve table aesthetics with subtle hover effect on rows */
+#csvTable.dataTable tbody tr:hover td {
+  background-color: #007bff !important;
+  color: white;
+  transition: background 0.2s ease-in-out;
+}
+
+/* Optional: Add table border and slight shadow for better visual separation */
+.sara-table-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background: #fefefe;
+}
 
   #csvTable td:last-child {
     justify-content: flex-end;
