@@ -149,3 +149,11 @@ td a button:hover {
     justify-content: flex-end;
   }
 }
+/* Specifically target the last column (Download) for vertical centering */
+#csvTable td:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
