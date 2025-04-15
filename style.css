@@ -43,6 +43,7 @@
 /* Align Download Button to Right */
 #csvTable td:last-child {
   text-align: right;
+  vertical-align: middle;
 }
 
 /* Download Button Styling */
@@ -148,12 +149,5 @@ td a button:hover {
   #csvTable td:last-child {
     justify-content: flex-end;
   }
-}
-/* Specifically target the last column (Download) for vertical centering */
-#csvTable td:last-child {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
 }
 
