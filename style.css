@@ -20,7 +20,7 @@
 
 /* Row Hover - Important and specific target */
 #csvTable.dataTable tbody tr:hover td {
-  background-color: #007bff !important;
+  background-color: #f7f16f !important;
 }
 
 /* Base Table Styles - Add DataTable class */
