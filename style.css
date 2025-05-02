@@ -6,21 +6,18 @@
   text-shadow: none;
   border-bottom: 2px solid #b20bb3 !important;
 }
+
 /* Center-align only the "Subject" header */
 #csvTable thead th:nth-child(4) {
   text-align: center !important;
 }
+
 /* Sorting arrows - Target DataTables classes */
 #csvTable.dataTable thead .sorting:after,
 #csvTable.dataTable thead .sorting_asc:after,
 #csvTable.dataTable thead .sorting_desc:after {
   color: #fff !important;
   opacity: 0.8 !important;
-}
-
-/* Row Hover - Important and specific target */
-#csvTable.dataTable tbody tr:hover td {
-  background-color: #f7f16f !important;
 }
 
 /* Base Table Styles - Add DataTable class */
@@ -31,6 +28,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
   border-collapse: collapse !important;
+  box-shadow: 0 2px 60px rgba(0, 0, 0, 0.1); /* Outer shadow */
 }
 
 #csvTable th,
@@ -44,6 +42,7 @@
 #csvTable td:last-child {
   text-align: right;
   vertical-align: middle;
+  justify-content: flex-end;
 }
 
 /* Download Button Styling */
@@ -82,6 +81,13 @@ td a button:hover {
   padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
+}
+
+/* Row Hover - Important and specific target */
+#csvTable.dataTable tbody tr:hover td {
+  background-color: #007bff !important;
+  color: white;
+  transition: background 0.2s ease-in-out;
 }
 
 /* Responsive Table for Mobile */
@@ -123,17 +129,12 @@ td a button:hover {
     flex: 1;
     margin-right: 10px;
   }
-  /* Optional: Prevent long Subject lines from breaking layout */
-.wrap-text {
-  white-space: normal;
-  word-break: break-word;
-}
 
-/* Improve table aesthetics with subtle hover effect on rows */
-#csvTable.dataTable tbody tr:hover td {
-  background-color: #007bff !important;
-  color: white;
-  transition: background 0.2s ease-in-out;
+  /* Optional: Prevent long Subject lines from breaking layout */
+  .wrap-text {
+    white-space: normal;
+    word-break: break-word;
+  }
 }
 
 /* Optional: Add table border and slight shadow for better visual separation */
@@ -141,13 +142,7 @@ td a button:hover {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow-x: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 60px rgba(0, 0, 0, 0.1); /* Outer shadow added */
   padding: 10px;
   background: #fefefe;
 }
-
-  #csvTable td:last-child {
-    justify-content: flex-end;
-  }
-}
-
