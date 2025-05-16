@@ -21,7 +21,7 @@
 }
 
 #csvTable.dataTable {
-  width: 100vw !important; /* Use full viewport width */
+  width: 100% !important; /* Use full viewport width */
   max-width: 100% !important;
   background: white;
   color: black;
@@ -138,12 +138,14 @@ td a button:hover {
 
 /* Updated Table Container */
 .sara-table-container {
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow-x: auto;
   box-shadow: 0 2px 60px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
   padding: 10px;
   background: #fefefe;
+  box-sizing: border-box;
 }
