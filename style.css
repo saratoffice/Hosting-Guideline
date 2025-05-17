@@ -1,6 +1,7 @@
-/* Table Header Styling - Increased Specificity */
+
+ /* Table Header Styling - Increased Specificity */
 #csvTable.dataTable thead tr th {
-  background-color: #101535 !important;
+  background-color: #00bbff !important;
   color: #ffffff !important;
   font-weight: bold;
   text-shadow: none;
@@ -20,10 +21,10 @@
   opacity: 0.8 !important;
 }
 
-/* Table Styling - Full Width */
+/* Table Styling - 95% Width */
 #csvTable.dataTable {
-  width: 100vw !important;
-  max-width: 100% !important;
+  
+  max-width: 98vw !important;
   background: white;
   color: black;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -141,18 +142,19 @@ td a button:hover {
   }
 }
 
-/* Updated Table Container - Full Width */
+/* Updated Table Container - 95% Width */
 .sara-table-container {
   width: 100vw !important;
-  max-width: 120% !important;
+  max-width: 90vw !important;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow-x: auto;
-  margin: 0; /* Equal margin on both sides */
-  padding: 15px; /* Equal padding on both sides */
+  box-shadow: 0 2px 60px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Center the container */
+  padding: 10px;
   background: #fefefe;
   box-sizing: border-box;
-  box-shadow:
+   box-shadow:
     0 4px 6px rgba(0, 0, 0, 0.1),
     0 10px 20px rgba(0, 0, 0, 0.15),
     0 20px 40px rgba(0, 0, 0, 0.2);
